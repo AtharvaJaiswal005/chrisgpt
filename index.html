@@ -636,16 +636,20 @@
         }
 
         @media (max-width: 768px) {
-            html, body {
-                overflow: hidden;
-                position: fixed;
-                width: 100%;
+            html {
                 height: 100%;
+            }
+
+            body {
+                height: 100%;
+                min-height: 100%;
+                min-height: -webkit-fill-available;
             }
 
             .app {
                 height: 100%;
-                height: -webkit-fill-available;
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
             }
 
             .sidebar {
@@ -673,33 +677,142 @@
 
             .main {
                 width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .chat-container {
+                flex: 1;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .welcome {
-                padding: 16px;
-                justify-content: flex-start;
-                padding-top: 60px;
+                padding: 20px 16px;
+                justify-content: center;
+                align-items: center;
+                min-height: 100%;
             }
 
             .welcome-title {
-                font-size: 20px;
+                font-size: 22px;
                 text-align: center;
-                margin-bottom: 24px;
+                margin-bottom: 28px;
             }
 
             .suggestions {
                 grid-template-columns: 1fr;
                 gap: 10px;
+                width: 100%;
+                max-width: 400px;
             }
 
             .suggestion-card {
-                padding: 12px 14px;
+                padding: 14px 16px;
             }
 
             .suggestion-icon {
+                width: 20px;
+                height: 20px;
+                margin-bottom: 8px;
+            }
+
+            .suggestion-title {
+                font-size: 14px;
+            }
+
+            .suggestion-desc {
+                font-size: 12px;
+            }
+
+            .message {
+                padding: 0 16px;
+                margin-bottom: 16px;
+            }
+
+            .user-bubble {
+                max-width: 85%;
+                padding: 10px 14px;
+                font-size: 15px;
+            }
+
+            .bot-content {
+                font-size: 15px;
+                line-height: 1.6;
+            }
+
+            .message-actions {
+                opacity: 1;
+                margin-top: 8px;
+            }
+
+            .input-area {
+                padding: 12px 16px;
+                padding-bottom: 16px;
+                background: var(--bg-primary);
+                flex-shrink: 0;
+            }
+
+            .input-container {
+                padding: 6px 6px 6px 14px;
+                border-radius: 24px;
+            }
+
+            #message-input {
+                font-size: 16px;
+                padding: 10px 8px;
+            }
+
+            .attach-btn {
+                padding: 6px;
+            }
+
+            .attach-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .voice-btn, .send-btn {
+                width: 36px;
+                height: 36px;
+            }
+
+            .voice-btn svg, .send-btn svg {
                 width: 18px;
                 height: 18px;
-                margin-bottom: 6px;
+            }
+
+            .input-footer {
+                font-size: 11px;
+                margin-top: 10px;
+            }
+
+            .main-header {
+                padding: 12px 16px;
+                flex-shrink: 0;
+            }
+
+            .model-selector {
+                font-size: 15px;
+                padding: 8px 12px;
+            }
+
+            .toast {
+                bottom: 100px;
+                font-size: 14px;
+                padding: 12px 20px;
+            }
+
+            .messages-container {
+                padding: 16px 0;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 380px) {
+            .welcome-title {
+                font-size: 20px;
             }
 
             .suggestion-title {
@@ -710,111 +823,21 @@
                 font-size: 11px;
             }
 
-            .message {
-                padding: 0 12px;
-                margin-bottom: 16px;
-            }
-
-            .user-bubble {
-                max-width: 85%;
-                padding: 10px 14px;
-                font-size: 14px;
-            }
-
-            .bot-content {
-                font-size: 14px;
-                line-height: 1.6;
-            }
-
-            .message-actions {
-                opacity: 1;
-                margin-top: 8px;
-            }
-
-            .input-area {
-                padding: 10px 12px 16px;
-                position: sticky;
-                bottom: 0;
-                background: var(--bg-primary);
-            }
-
-            .input-container {
-                padding: 4px 4px 4px 12px;
-                border-radius: 22px;
-            }
-
-            #message-input {
-                font-size: 16px;
-                padding: 8px 8px;
-            }
-
-            .attach-btn {
-                padding: 6px;
-            }
-
-            .attach-btn svg {
-                width: 18px;
-                height: 18px;
-            }
-
-            .voice-btn, .send-btn {
-                width: 32px;
-                height: 32px;
-            }
-
-            .voice-btn svg, .send-btn svg {
-                width: 16px;
-                height: 16px;
-            }
-
-            .input-footer {
-                font-size: 10px;
-                margin-top: 8px;
-            }
-
-            .main-header {
-                padding: 10px 12px;
-            }
-
-            .model-selector {
-                font-size: 14px;
-                padding: 6px 10px;
-            }
-
-            .toast {
-                bottom: 80px;
-                font-size: 13px;
-                padding: 10px 16px;
-            }
-
-            .chat-container {
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .messages-container {
-                padding: 12px 0;
-            }
-        }
-
-        /* Extra small devices */
-        @media (max-width: 380px) {
-            .welcome-title {
-                font-size: 18px;
-            }
-
-            .suggestion-title {
-                font-size: 12px;
-            }
-
-            .suggestion-desc {
-                font-size: 10px;
+            .suggestion-card {
+                padding: 12px 14px;
             }
         }
 
         /* Safe area for notched phones */
         @supports (padding-bottom: env(safe-area-inset-bottom)) {
-            .input-area {
-                padding-bottom: calc(16px + env(safe-area-inset-bottom));
+            @media (max-width: 768px) {
+                .input-area {
+                    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+                }
+
+                .main-header {
+                    padding-top: calc(12px + env(safe-area-inset-top));
+                }
             }
         }
     </style>
